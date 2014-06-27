@@ -1,0 +1,32 @@
+<p>Email: <%= @user.email if @user.email %></p>
+
+<script type="text/javascript">
+			var saveData = JSON.parse(<%= @bracket %>);
+			 
+			/* Called whenever bracket is modified
+			 *
+			 * data:     changed bracket object in format given to init
+			 * userData: optional data given when bracket is created.
+			 */
+			function saveFn(data) {
+				var json = jQuery.toJSON(data);
+				$.ajax({
+					type: 'post', 
+					url:'/users/save_bracket',
+					data: json, 
+					contentType: "application/json",
+					dataType: 'json'
+				})
+			}
+ 
+			$(function() {
+			    var container = $('div#save .demo')
+			    container.bracket({
+			      init: saveData,
+			      save: saveFn})
+			})
+
+</script>
+	<div id="save"> 
+	<div class="demo"></div>
+	</div>
