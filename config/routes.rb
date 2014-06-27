@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users
   get 'users' => 'users/registrations#index'
-  get 'users/:id' => 'users/registrations#show'
+  get 'users/:id' => 'users/registrations#show', :as => 'user'
   post 'users/save_bracket' => 'users/registrations#save_bracket'
   root to: "users#index"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,7 +11,7 @@
 
 class Users::RegistrationsController < ApplicationController
   before_filter :authenticate_user!
-  DEFAULT_BRACKET = {teams:[["Brazil","Chili"],["Columbia","Uruguay"],["France","Nigeria"],["Germany","Algeria"],["Netherlands","Mexico"],["CostaRica","Greece"],["Argentina","Switzerland"],["Belgium","USA"]],results:[[[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0]],[[0,0]]],[[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0]],[[0,0],[0,0]],[[0,0]],[[0,0]]],[[[0,0],[0,0]],[[0,0]]]]}
+  DEFAULT_BRACKET = '{"teams":[["Brazil","Chili"],["Columbia","Uruguay"],["France","Nigeria"],["Germany","Algeria"],["Netherlands","Mexico"],["CostaRica","Greece"],["Argentina","Switzerland"],["Belgium","USA"]],"results":[[[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0]],[[0,0]]],[[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0]],[[0,0],[0,0]],[[0,0]],[[0,0]]],[[[0,0],[0,0]],[[0,0]]]]}'
 
   def index
     @users = User.all
