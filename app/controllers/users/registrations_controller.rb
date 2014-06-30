@@ -20,14 +20,15 @@ class Users::RegistrationsController < ApplicationController
   def show
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect('/403.html')
+      redirect_to('/403.html')
+    else
+      if !@user.bracket
+      	@user.bracket = DEFAULT_BRACKET
+      	@user.save
+      end
+      @bracket = @user.bracket.to_json.html_safe
+      render 'users/show.html.erb'
     end
-    if !@user.bracket
-    	@user.bracket = DEFAULT_BRACKET
-    	@user.save
-    end
-    @bracket = @user.bracket.to_json.html_safe
-    render 'users/show.html.erb'
   end
 
   def save_bracket
