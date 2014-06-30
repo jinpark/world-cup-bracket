@@ -20,7 +20,7 @@ class Users::RegistrationsController < ApplicationController
   def show
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to :back, :alert => "Access denied."
+      redirect('/403.html')
     end
     if !@user.bracket
     	@user.bracket = DEFAULT_BRACKET
