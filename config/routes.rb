@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'users' => 'users/registrations#index'
   get 'users/:id' => 'users/registrations#show', :as => 'user'
   post 'users/save_bracket' => 'users/registrations#save_bracket'
-  root :to => "devise/sessions#new"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
